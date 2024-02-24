@@ -1,0 +1,68 @@
+# Load necessary libraries
+library(readr)   # For reading CSV files
+library(plyr)    # For data manipulation
+library(tidyverse)  # For data wrangling and visualization
+library(lme4)    # For linear mixed-effects models
+library(car)     # For diagnostic plots
+library(ggplot2) # For visualization
+library(nlme)    # For fitting mixed-effects models
+
+# Read the CSV file
+data <- read_csv("../data/infl_231010.csv")
+
+# Check the class of variables in the data
+sapply(data, class)
+
+# Convert certain variables to factors
+data$dxgroup = factor(data$dxgroup)
+data$gender = factor(data$gender)
+data$visit = factor(data$visit)
+
+# Check the class of variables again to confirm conversion
+sapply(data, class)
+# Check column names of the dataframe
+names(data)
+
+# Use complete.cases() function to retain rows with complete data
+complete_data <- data[complete.cases(data[, c("bdnf", "ccl11", "ccl26", "ip10", 
+                                              "mcp1", "mdc", "mip1b", "il17a", "vegf", "fract", 
+                                              "ifny", "il10", "il6", "il8", "tnfa", "crp", 
+                                              "saa", "icam1", "vcam1", "lgcrp", "lgccl11", 
+                                              "lgccl26", "lgip10", "lgmcp1", "lgmdc", "lgmip1b", 
+                                              "lgil17a", "lgvegf", "lgifny", "lgil10", "lgil6", 
+                                              "lgil8", "lgtnfa", "lgsaa", "lgicam1", "lgvcam1", 
+                                              "lgbdnf", "lgfract", 'agem' ,'dxgroup', 'gender', 'visit', 'subnum', 'time')]), ]
+
+# Fit the mixed-effects model using lme4
+mod2 <- lme(lgvegf ~ time * (agem * dxgroup + gender) + dxgroup * (gender) ,
+            random = ~ time | subnum, 
+            data = complete_data)
+
+# Print model summary
+summary(mod2)
+
+# Extract fitted values
+complete_data$fitted_values <- fitted(mod2)
+
+# Create a ggplot to plot the data and fitted values
+ggplot(complete_data, aes(x = time, y = lgvegf, color = dxgroup)) +
+  geom_point(size = 0.9) +  # Add points for the observed data
+  geom_smooth(method = "lm", se = FALSE) +  # Add regression line without confidence interval
+  labs(x = "Time", y = "lgvegf", color = "dxgroup") +  # Labels
+  theme_minimal()  # Theme
+
+ggplot(complete_data, aes(x = time, y = lgvegf, color = dxgroup, linetype = gender)) +
+  geom_point(size = 0.9) +  # Add points for the observed data
+  geom_smooth(method = "lm", se = TRUE, alpha = 0.3) +  # Add regression line with confidence interval
+  labs(x = "Time", y = "lgvegf", color = "dxgroup", linetype = "Gender") +  # Labels
+  scale_linetype_manual(values = c("solid", "dashed")) +  # Specify line styles
+  theme_minimal()  # Theme
+
+# Create a ggplot to plot the data and fitted values
+ggplot(complete_data, aes(x = time, y = fitted_values, color = dxgroup, linetype = gender)) +
+  geom_point(size = 0.9) +  # Add points for the observed data
+  geom_smooth(method = "lm", se = TRUE) +  # Add regression line without confidence interval
+  labs(x = "Time", y = "Predicted lgvegf", color = "dxgroup") +  # Labels
+  theme_minimal()  # Theme
+print('completed')
+

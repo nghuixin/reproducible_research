@@ -1,0 +1,517 @@
+0:pred_data <- expand.grid(
+0:agem = seq(min(complete_data$agem), max(complete_data$agem), length.out = 100),
+0:dxgroup = levels(complete_data$dxgroup),
+0:gender = levels(complete_data$gender),
+0:subnum = levels(complete_data$subnum)
+0:)
+0:pred_data$lgvegf <- predict(mod, newdata = pred_data)
+0:# Make predictions
+0:pred_data <- expand.grid(
+0:agem = seq(min(complete_data$agem), max(complete_data$agem), length.out = 100),
+0:dxgroup = levels(complete_data$dxgroup),
+0:gender = levels(complete_data$gender)
+0:#subnum = levels(complete_data$subnum)
+0:)
+0:pred_data$lgvegf <- predict(mod, newdata = pred_data)
+0:pred_data$lgvegf <- predict(mod, newdata = pred_data)
+0:sapply(data, class)
+0:data$dxgroup = factor(data$dxgroup)
+0:data$gender = factor(data$gender)
+0:data <- read_csv("infl_231010.csv")
+0:View(data)
+0:sapply(data, class)
+0:data$dxgroup = factor(data$dxgroup)
+0:data$gender = factor(data$gender)
+0:sapply(data, class) # check if dxgroup and gender are now categorical
+0:names(data) # column names of dataframe
+0:complete.cases() function
+0:# returns a logical vector indicating which rows have complete data (i.e., no missing values) across all specified columns
+0:complete_data <- data[complete.cases(data[, c("bdnf", "ccl11", "ccl26", "ip10",
+0:"mcp1", "mdc", "mip1b", "il17a", "vegf", "fract",
+0:"ifny", "il10", "il6", "il8", "tnfa", "crp",
+0:"saa", "icam1", "vcam1", "lgcrp", "lgccl11",
+0:"lgccl26", "lgip10", "lgmcp1", "lgmdc", "lgmip1b",
+0:"lgil17a", "lgvegf", "lgifny", "lgil10", "lgil6",
+0:"lgil8", "lgtnfa", "lgsaa", "lgicam1", "lgvcam1",
+0:"lgbdnf", "lgfract", 'agem' ,'dxgroup', 'gender', 'educ', 'subnum')]), ]
+0:# Assuming 'mod' is already defined as per your code
+0:# Assuming 'mod' is already defined as per your code
+0:# Fit the mixed-effects model using lme4
+0:mod <- lme4::lmer(lgvegf ~ agem * (dxgroup + gender)  + (agem | subnum), data = complete_data)
+0:mod
+0:# Print model summary
+0:summary(mod)
+0:anova(mod)
+0:# Make predictions
+0:pred_data <- expand.grid(
+0:agem = seq(min(complete_data$agem), max(complete_data$agem), length.out = 100),
+0:dxgroup = levels(complete_data$dxgroup),
+0:gender = levels(complete_data$gender)
+0:#subnum = levels(complete_data$subnum)
+0:)
+0:pred_data$lgvegf <- predict(mod, newdata = pred_data)
+0:# Make predictions
+0:pred_data <- expand.grid(
+0:agem = seq(min(complete_data$agem), max(complete_data$agem), length.out = 100),
+0:dxgroup = levels(complete_data$dxgroup),
+0:gender = levels(complete_data$gender),
+0:subnum = levels(complete_data$subnum)
+0:)
+0:pred_data$lgvegf <- predict(mod, newdata = pred_data)
+0:# Plot
+0:ggplot(pred_data, aes(x = agem, y = lgvegf, color = gender, linetype = dxgroup)) +
+0:geom_line() +
+0:labs(x = "Age (months)", y = "Predicted lgvegf", color = "Gender", linetype = "dxgroup") +
+0:theme_minimal()
+0:data <- read_csv("infl_231010.csv")
+0:View(data)
+0:sapply(data, class)
+0:data$dxgroup = factor(data$dxgroup)
+0:data$gender = factor(data$gender)
+0:#data$subnum = factor(data$subnum)
+0:sapply(data, class) # check if dxgroup and gender are now categorical
+0:names(data) # column names of dataframe
+0:# complete.cases() function
+0:# returns a logical vector indicating which rows have complete data (i.e., no missing values) across all specified columns
+0:complete_data <- data[complete.cases(data[, c("bdnf", "ccl11", "ccl26", "ip10",
+0:"mcp1", "mdc", "mip1b", "il17a", "vegf", "fract",
+0:"ifny", "il10", "il6", "il8", "tnfa", "crp",
+0:"saa", "icam1", "vcam1", "lgcrp", "lgccl11",
+0:"lgccl26", "lgip10", "lgmcp1", "lgmdc", "lgmip1b",
+0:"lgil17a", "lgvegf", "lgifny", "lgil10", "lgil6",
+0:"lgil8", "lgtnfa", "lgsaa", "lgicam1", "lgvcam1",
+0:"lgbdnf", "lgfract", 'agem' ,'dxgroup', 'gender', 'educ', 'subnum')]), ]
+0:# Assuming 'mod' is already defined as per your code
+0:# Fit the mixed-effects model using lme4
+0:mod <- lme4::lmer(lgvegf ~ agem * (dxgroup + gender)  + (agem | subnum), data = complete_data)
+0:mod
+0:# Print model summary
+0:summary(mod)
+0:anova(mod)
+0:# Make predictions
+0:pred_data <- expand.grid(
+0:agem = seq(min(complete_data$agem), max(complete_data$agem), length.out = 100),
+0:dxgroup = levels(complete_data$dxgroup),
+0:gender = levels(complete_data$gender),
+0:subnum = levels(complete_data$subnum)
+0:)
+0:pred_data$lgvegf <- predict(mod, newdata = pred_data)
+0:data <- read_csv("infl_231010.csv")
+0:sapply(data, class)
+0:data$dxgroup = factor(data$dxgroup)
+0:data$gender = factor(data$gender)
+0:sapply(data, class) # check if dxgroup and gender are now categorical
+0:names(data)
+0:# complete.cases() function
+0:# returns a logical vector indicating which rows have complete data (i.e., no missing values) across all specified columns
+0:complete_data <- data[complete.cases(data[, c("bdnf", "ccl11", "ccl26", "ip10",
+0:"mcp1", "mdc", "mip1b", "il17a", "vegf", "fract",
+0:"ifny", "il10", "il6", "il8", "tnfa", "crp",
+0:"saa", "icam1", "vcam1", "lgcrp", "lgccl11",
+0:"lgccl26", "lgip10", "lgmcp1", "lgmdc", "lgmip1b",
+0:"lgil17a", "lgvegf", "lgifny", "lgil10", "lgil6",
+0:"lgil8", "lgtnfa", "lgsaa", "lgicam1", "lgvcam1",
+0:"lgbdnf", "lgfract", 'agem' ,'dxgroup', 'gender', 'educ', 'subnum')]), ]
+0:# Fit the mixed-effects model using lme4
+0:mod <- lme4::lmer(lgvegf ~ agem * (dxgroup + gender)  + (agem | subnum), data = complete_data)
+0:# Fit the mixed-effects model using lme4
+0:mod <- lme4::lmer(lgvegf ~ dxgroup*gender  + (agem | subnum), data = complete_data)
+0:# Fit the mixed-effects model using lme4
+0:mod <- lme4::lmer(lgvegf ~ dxgroup*gender  + (agem | subnum), data = complete_data)
+0:mod
+0:# Print model summary
+0:summary(mod)
+0:# Fit the mixed-effects model using lme4
+0:mod <- lme4::lmer(lgvegf ~ dxgroup*gender*agem  + (1 | subnum), data = complete_data)
+0:mod
+0:# Print model summary
+0:summary(mod)
+0:anova(mod)
+0:# Make predictions
+0:pred_data <- expand.grid(
+0:agem = seq(min(complete_data$agem), max(complete_data$agem), length.out = 100),
+0:dxgroup = levels(complete_data$dxgroup),
+0:gender = levels(complete_data$gender),
+0:subnum = levels(complete_data$subnum)
+0:)
+0:pred_data$lgvegf <- predict(mod, newdata = pred_data)
+0:pred_data$lgvegf <- predict(mod, newdata = pred_data)
+0:# Make predictions
+0:pred_data <- expand.grid(
+0:agem = seq(min(complete_data$agem), max(complete_data$agem), length.out = 100),
+0:dxgroup = levels(complete_data$dxgroup),
+0:gender = levels(complete_data$gender),
+0:subnum = levels(complete_data$subnum)
+0:)
+0:pred_data$lgvegf <- predict(mod, newdata = pred_data)
+0:# Make predictions
+0:pred_data <- expand.grid(
+0:agem = seq(min(complete_data$agem), max(complete_data$agem), length.out = 100),
+0:dxgroup = levels(complete_data$dxgroup),
+0:gender = levels(complete_data$gender)
+0:# subnum = levels(complete_data$subnum)
+0:)
+0:# Make predictions
+0:pred_data <- expand.grid(
+0:agem = seq(min(complete_data$agem), max(complete_data$agem), length.out = 100),
+0:dxgroup = levels(complete_data$dxgroup),
+0:gender = levels(complete_data$gender)
+0:# subnum = levels(complete_data$subnum)
+0:)
+0:pred_data$lgvegf <- predict(mod, newdata = pred_data)
+0:# Make predictions
+0:pred_data <- expand.grid(
+0:agem = seq(min(complete_data$agem), max(complete_data$agem), length.out = 100),
+0:dxgroup = levels(complete_data$dxgroup),
+0:gender = levels(complete_data$gender),
+0:subnum = levels(complete_data$subnum)
+0:)
+0:pred_data
+0:pred_data
+0:# Make predictions
+0:pred_data <- expand.grid(
+0:agem = seq(min(complete_data$agem), max(complete_data$agem), length.out = 100),
+0:dxgroup = levels(complete_data$dxgroup),
+0:gender = levels(complete_data$gender),
+0:subnum = complete_data$subnum
+0:)
+0:pred_data
+0:pred_data$lgvegf <- predict(mod, newdata = pred_data)
+0:pred_data
+0:pred_data
+0:# Plot
+0:ggplot(pred_data, aes(x = agem, y = lgvegf, color = gender, linetype = dxgroup)) +
+0:geom_line() +
+0:labs(x = "Age (months)", y = "Predicted lgvegf", color = "Gender", linetype = "dxgroup") +
+0:theme_minimal()
+0:# Plot
+0:ggplot(pred_data, aes(x = agem, y = lgvegf, color = gender)) +
+0:geom_line() +
+0:labs(x = "Age (months)", y = "Predicted lgvegf", color = "Gender", linetype = "dxgroup") +
+0:theme_minimal()
+0:ggplot(pred_data, aes(x = agem, y = lgvegf, color = gender)) +
+0:geom_line() +
+0:labs(x = "Age (months)", y = "Predicted lgvegf", color = "Gender") +
+0:theme_minimal()
+0:names(data) # column names of dataframe
+0:data$time
+0:names(data)
+0:data$visit
+0:data$visit = factor(data$visit)
+0:levels(data$visit)
+0:# complete.cases() function
+0:# returns a logical vector indicating which rows have complete data (i.e., no missing values) across all specified columns
+0:complete_data <- data[complete.cases(data[, c("bdnf", "ccl11", "ccl26", "ip10",
+0:"mcp1", "mdc", "mip1b", "il17a", "vegf", "fract",
+0:"ifny", "il10", "il6", "il8", "tnfa", "crp",
+0:"saa", "icam1", "vcam1", "lgcrp", "lgccl11",
+0:"lgccl26", "lgip10", "lgmcp1", "lgmdc", "lgmip1b",
+0:"lgil17a", "lgvegf", "lgifny", "lgil10", "lgil6",
+0:"lgil8", "lgtnfa", "lgsaa", "lgicam1", "lgvcam1",
+0:"lgbdnf", "lgfract", 'agem' ,'dxgroup', 'gender', 'visit', 'subnum', 'time')]), ]
+0:mod2 <- lgvegf ~ lme4::lmer(time*dxgroup + agem + gender + (time | visit/subnum), data = complete_data)
+0:# Print model summary
+0:summary(mod2)
+0:mod2 <- lgvegf ~ lme4::lmer(time*dxgroup + agem + gender + (time | visit/subnum), data = complete_data)
+0:# Print model summary
+0:summary(mod2)
+0:anova(mod2)
+0:mod2 <- lme4::lmer(lgvegf ~ time*dxgroup + agem + gender + (time | visit/subnum), data = complete_data)
+0:data <- read_csv("infl_231010.csv")
+0:#View(data)
+0:sapply(data, class)
+0:data$dxgroup = factor(data$dxgroup)
+0:data$gender = factor(data$gender)
+0:data$visit = factor(data$visit)
+0:#data$subnum = factor(data$subnum)
+0:sapply(data, class) # check if dxgroup and gender are now categorical
+0:names(data) # column names of dataframe
+0:# complete.cases() function
+0:# returns a logical vector indicating which rows have complete data (i.e., no missing values) across all specified columns
+0:complete_data <- data[complete.cases(data[, c("bdnf", "ccl11", "ccl26", "ip10",
+0:"mcp1", "mdc", "mip1b", "il17a", "vegf", "fract",
+0:"ifny", "il10", "il6", "il8", "tnfa", "crp",
+0:"saa", "icam1", "vcam1", "lgcrp", "lgccl11",
+0:"lgccl26", "lgip10", "lgmcp1", "lgmdc", "lgmip1b",
+0:"lgil17a", "lgvegf", "lgifny", "lgil10", "lgil6",
+0:"lgil8", "lgtnfa", "lgsaa", "lgicam1", "lgvcam1",
+0:"lgbdnf", "lgfract", 'agem' ,'dxgroup', 'gender', 'visit', 'subnum', 'time')]), ]
+0:# Assuming 'mod' is already defined as per your code
+0:# Fit the mixed-effects model using lme4
+0:#mod1 <- lme4::lmer(lgvegf ~ dxgroup*gender*  + (agem | subnum), data = complete_data)
+0:mod2 <- lme4::lmer(lgvegf ~ time*dxgroup + agem + gender + (time | visit/subnum), data = complete_data)
+0:# Fit the mixed-effects model using lme4
+0:#mod1 <- lme4::lmer(lgvegf ~ dxgroup*gender*  + (agem | subnum), data = complete_data)
+0:mod2 <- lme4::lmer(lgvegf ~ time*dxgroup + agem + gender + (time | subnum), data = complete_data)
+0:# Fit the mixed-effects model using lme4
+0:#mod1 <- lme4::lmer(lgvegf ~ dxgroup*gender*  + (agem | subnum), data = complete_data)
+0:mod2 <- lme4::lmer(lgvegf ~ time*dxgroup + agem + gender + (time | subnum), data = complete_data)
+0:# Fit the mixed-effects model using lme4
+0:#mod1 <- lme4::lmer(lgvegf ~ dxgroup*gender*  + (agem | subnum), data = complete_data)
+0:mod2 <- lme4::lmer(lgvegf ~ time*dxgroup + agem + gender + (time | visit/subnum), data = complete_data)
+0:anova(mod2)
+0:# Print model summary
+0:summary(mod2)
+0:install.packages("lmerTest")
+0:library(lmerTest)
+0:# Print model summary with p-values
+0:summary(mod2)
+0:mod2 <- lme4::lmer(lgvegf ~ time*dxgroup + agem + gender + (time | visit/subnum), data = complete_data)
+0:anova(mod2)
+0:# Print model summary
+0:summary(mod2)
+0:# Print model summary with p-values
+0:lmerTest:summary(mod2)
+0:# Print model summary with p-values
+0:lmerTest::summary(mod2)
+0:# Print model summary with p-values
+0:lmerTest::summary(mod2)
+0:library(nlme)
+0:# Fit the model
+0:mod2 <- lme(lgvegf ~ time * dxgroup + agem + gender,
+0:random = ~ time | visit/subnum,
+0:data = complete_data)
+0:# Fit the model
+0:mod2 <- lme(lgvegf ~ time * dxgroup + agem + gender,
+0:random = ~ time | ubnum,
+0:data = complete_data)
+0:# Fit the model
+0:mod2 <- lme(lgvegf ~ time * dxgroup + agem + gender,
+0:random = ~ time | subnum,
+0:data = complete_data)
+0:# Print model summary
+0:summary(mod2)
+0:# Fit the model
+0:mod2 <- lme(lgvegf ~ time * dxgroup + agem + gender,
+0:random = ~ time | visit,
+0:data = complete_data)
+0:# Print model summary
+0:summary(mod2)
+0:# Fit the model
+0:mod2 <- lme(lgvegf ~ time * dxgroup + agem + gender,
+0:random = ~ time | subnum,
+0:data = complete_data)
+0:# Print model summary
+0:summary(mod2)
+0:#mod1 <- lme4::lmer(lgvegf ~ dxgroup*gender*  + (agem | subnum), data = complete_data)
+0:mod2 <- lme4::lmer(lgvegf ~ time*dxgroup + agem + gender + (time | subnum), data = complete_data)
+0:library(nlme)
+0:# Fit the model
+0:mod2 <- lme(lgvegf ~ time * dxgroup + agem + gender,
+0:random = ~ time | subnum,
+0:data = complete_data)
+0:# Print model summary
+0:summary(mod2)
+0:# Fit the model
+0:mod2 <- lme(lgvegf ~ time * dxgroup* gender + agem + gender,
+0:random = ~ time | subnum,
+0:data = complete_data)
+0:# Print model summary
+0:summary(mod2)
+0:# Fit the model
+0:mod2 <- lme(lgvegf ~ time*dxgroup + dxgroup* gender + agem + gender,
+0:random = ~ time | subnum,
+0:data = complete_data)
+0:# Print model summary
+0:summary(mod2)
+0:library(nlme)
+0:library(ggplot2)
+0:# Fit the model
+0:mod2 <- lme(lgvegf ~ time * dxgroup + dxgroup * gender + agem + gender,
+0:random = ~ time | subnum,
+0:data = complete_data)
+0:# Extract fitted values
+0:complete_data$fitted_values <- fitted(mod2)
+0:# Create a ggplot
+0:ggplot(complete_data, aes(x = time, y = lgvegf)) +
+0:geom_point() +  # Add points for the observed data
+0:geom_line(aes(y = fitted_values), color = "blue") +  # Add lines for the fitted values
+0:facet_wrap(~ dxgroup) +  # Facet by dxgroup
+0:labs(x = "Time", y = "lgvegf") +  # Labels
+0:theme_minimal()  #
+0:# Create a ggplot
+0:ggplot(complete_data, aes(x = time, y = lgvegf)) +
+0:geom_point() +  # Add points for the observed data
+0:geom_line(aes(y = fitted_values), color = factor(dxgroup)) +  # Add lines for the fitted values
+0:facet_wrap(~ dxgroup) +  # Facet by dxgroup
+0:labs(x = "Time", y = "lgvegf") +  # Labels
+0:theme_minimal()  # Theme
+0:# Create a ggplot
+0:ggplot(complete_data, aes(x = time, y = lgvegf)) +
+0:geom_point() +  # Add points for the observed data
+0:geom_line(aes(y = fitted_values), color = factor(gender)) +  # Add lines for the fitted values
+0:facet_wrap(~ dxgroup) +  # Facet by dxgroup
+0:labs(x = "Time", y = "lgvegf") +  # Labels
+0:theme_minimal()  # Theme
+0:# Create a ggplot
+0:ggplot(complete_data, aes(x = time, y = lgvegf)) +
+0:geom_point(factor(gender)) +  # Add points for the observed data
+0:geom_line(aes(y = fitted_values), color = "blue") +  # Add lines for the fitted values
+0:facet_wrap(~ dxgroup) +  # Facet by dxgroup
+0:labs(x = "Time", y = "lgvegf") +  # Labels
+0:theme_minimal()  # Theme
+0:# Create a ggplot
+0:ggplot(complete_data, aes(x = time, y = lgvegf)) +
+0:geom_point(complete_data, aes(factor(gender))) +  # Add points for the observed data
+0:geom_line(aes(y = fitted_values), color = "blue") +  # Add lines for the fitted values
+0:facet_wrap(~ dxgroup) +  # Facet by dxgroup
+0:labs(x = "Time", y = "lgvegf") +  # Labels
+0:theme_minimal()  # Theme
+0:# Create a ggplot
+0:ggplot(complete_data, aes(x = time, y = lgvegf)) +
+0:geom_point() +  # Add points for the observed data
+0:geom_line(aes(y = fitted_values), color = "blue") +  # Add lines for the fitted values
+0:facet_wrap(~ dxgroup) +  # Facet by dxgroup
+0:labs(x = "Time", y = "lgvegf") +  # Labels
+0:theme_minimal()  # Theme
+0:# Fit the model
+0:mod2 <- lme(lgvegf ~ age * dxgroup * gender +
+0:random = ~ time | subnum,
+0:# Fit the model
+0:mod2 <- lme(lgvegf ~ age * dxgroup * gender ,
+0:random = ~ time | subnum,
+0:data = complete_data)
+0:# Fit the model
+0:mod2 <- lme(lgvegf ~ agem * dxgroup * gender ,
+0:random = ~ time | subnum,
+0:data = complete_data)
+0:# Extract fitted values
+0:complete_data$fitted_values <- fitted(mod2)
+0:# Print model summary
+0:summary(mod2)
+0:# Fit the model
+0:mod2 <- lme(lgvegf ~ time * (agem * dxgroup + gender) + dxgroup * (gender) ,
+0:random = ~ time | subnum,
+0:data = complete_data)
+0:# Print model summary
+0:summary(mod2)
+0:# Fit the model
+0:mod2 <- lme(lgvegf ~ visit * (agem * dxgroup + gender) + dxgroup * (gender) ,
+0:random = ~ visit | subnum,
+0:data = complete_data)
+0:# Fit the model
+0:mod2 <- lme(lgvegf ~ time * (agem * dxgroup + gender) + dxgroup * (gender) ,
+0:random = ~ time | subnum,
+0:data = complete_data)
+0:# Print model summary
+0:summary(mod2)
+0:# Extract fitted values
+0:complete_data$fitted_values <- fitted(mod2)
+0:# Print model summary
+0:summary(mod2)
+0:# Fit the model
+0:mod2 <- lme(lgvegf ~ visit * (agem * dxgroup + gender) + dxgroup * (gender) ,
+0:random = ~ time | visit,
+0:data = complete_data)
+0:# Fit the model
+0:mod2 <- lme(lgvegf ~ visit * (agem * dxgroup + gender) + dxgroup * (gender) ,
+0:random = ~ time | visit,
+0:data = complete_data)
+0:# Create a ggplot
+0:ggplot(complete_data, aes(x = time, y = lgvegf, color = dxgroup)) +
+0:geom_point() +  # Add points for the observed data
+0:geom_smooth(method = "lm", se = FALSE) +  # Add regression line without confidence interval
+0:labs(x = "Time", y = "lgvegf", color = "dxgroup") +  # Labels
+0:theme_minimal()  # The
+0:# Create a ggplot
+0:ggplot(complete_data, aes(x = time, y = lgvegf, color = dxgroup, group = gender)) +
+0:geom_point() +  # Add points for the observed data
+0:geom_smooth(method = "lm", se = FALSE) +  # Add regression lines without confidence interval
+0:labs(x = "Time", y = "lgvegf", color = "dxgroup") +  # Labels
+0:theme_minimal()  # Theme
+0:# Create a ggplot
+0:ggplot(complete_data, aes(x = time, y = lgvegf, color = dxgroup, shape = gender)) +
+0:geom_point() +  # Add points for the observed data
+0:geom_smooth(method = "lm", se = FALSE) +  # Add regression line without confidence interval
+0:labs(x = "Time", y = "lgvegf", color = "dxgroup") +  # Labels
+0:theme_minimal()  # The
+0:fit.lme.EXCOMP2.tnfa.ML = lme(EXCOMP2 ~ daysbl * (age_interval + dxgroup + gender + educ + log_tnfa_ucla0) + dxgroup * (gender + educ + log_tnfa_ucla0),
+0:random = ~daysbl|subnum, method = "ML", data = data.EXCOMP2)
+0:# Create a ggplot
+0:ggplot(complete_data, aes(x = time, y = lgvegf, color = dxgroup, linetype = gender)) +
+0:geom_point() +  # Add points for the observed data
+0:geom_smooth(method = "lm", se = FALSE) +  # Add regression line without confidence interval
+0:labs(x = "Time", y = "lgvegf", color = "dxgroup", linetype = "Gender") +  # Labels
+0:scale_linetype_manual(values = c("solid", "dashed")) +  # Specify line styles
+0:theme_minimal()  # Theme
+0:# Create a ggplot
+0:ggplot(complete_data, aes(x = time, y = lgvegf, color = dxgroup, linetype = gender)) +
+0:geom_point() +  # Add points for the observed data
+0:geom_smooth(method = "lm", se = FALSE) +  # Add regression line without confidence interval
+0:labs(x = "Time", y = "lgvegf", color = "DX Group", linetype = "Gender") +  # Labels
+0:scale_linetype_manual(values = c("solid", "dashed"), name = "Gender",
+0:labels = c("Female", "Male")) +  # Specify line styles and legend labels
+0:theme_minimal()  # Theme
+0:# Create a ggplot
+0:ggplot(complete_data, aes(x = time, y = lgvegf, color = dxgroup, linetype = gender)) +
+0:geom_point() +  # Add points for the observed data
+0:geom_smooth(method = "lm", se = FALSE) +  # Add regression line without confidence interval
+0:labs(x = "Time", y = "lgvegf", color = "dxgroup", linetype = "Gender") +  # Labels
+0:scale_linetype_manual(values = c("solid", "dashed")) +  # Specify line styles
+0:theme_minimal()  # Theme
+0:# Create a ggplot
+0:ggplot(complete_data, aes(x = time, y = lgvegf, color = dxgroup)) +
+0:geom_point() +  # Add points for the observed data
+0:geom_smooth(method = "lm", se = FALSE) +  # Add regression line without confidence interval
+0:labs(x = "Time", y = "lgvegf", color = "dxgroup") +  # Labels
+0:theme_minimal()  # The
+0:# Load necessary libraries
+0:library(readr)   # For reading CSV files
+0:library(plyr)    # For data manipulation
+0:library(tidyverse)  # For data wrangling and visualization
+0:library(lme4)    # For linear mixed-effects models
+0:library(car)     # For diagnostic plots
+0:library(ggplot2) # For visualization
+0:library(nlme)    # For fitting mixed-effects models
+0:# Read the CSV file
+0:data <- read_csv("data/infl_231010.csv")
+0:# Check the class of variables in the data
+0:sapply(data, class)
+0:# Convert certain variables to factors
+0:data$dxgroup = factor(data$dxgroup)
+0:data$gender = factor(data$gender)
+0:data$visit = factor(data$visit)
+0:# Check the class of variables again to confirm conversion
+0:sapply(data, class)
+0:# Check column names of the dataframe
+0:names(data)
+0:# Use complete.cases() function to retain rows with complete data
+0:complete_data <- data[complete.cases(data[, c("bdnf", "ccl11", "ccl26", "ip10",
+0:"mcp1", "mdc", "mip1b", "il17a", "vegf", "fract",
+0:"ifny", "il10", "il6", "il8", "tnfa", "crp",
+0:"saa", "icam1", "vcam1", "lgcrp", "lgccl11",
+0:"lgccl26", "lgip10", "lgmcp1", "lgmdc", "lgmip1b",
+0:"lgil17a", "lgvegf", "lgifny", "lgil10", "lgil6",
+0:"lgil8", "lgtnfa", "lgsaa", "lgicam1", "lgvcam1",
+0:"lgbdnf", "lgfract", 'agem' ,'dxgroup', 'gender', 'visit', 'subnum', 'time')]), ]
+0:# Fit the mixed-effects model using lme4
+0:mod2 <- lme(lgvegf ~ time * (agem * dxgroup + gender) + dxgroup * (gender) ,
+0:random = ~ time | subnum,
+0:data = complete_data)
+0:# Print model summary
+0:summary(mod2)
+0:# Extract fitted values
+0:complete_data$fitted_values <- fitted(mod2)
+0:# Create a ggplot to plot the data and fitted values
+0:ggplot(complete_data, aes(x = time, y = lgvegf, color = dxgroup)) +
+0:geom_point(size = 0.9) +  # Add points for the observed data
+0:geom_smooth(method = "lm", se = FALSE) +  # Add regression line without confidence interval
+0:labs(x = "Time", y = "lgvegf", color = "dxgroup") +  # Labels
+0:theme_minimal()  # Theme
+0:ggplot(complete_data, aes(x = time, y = lgvegf, color = dxgroup, linetype = gender)) +
+0:geom_point(size = 0.9) +  # Add points for the observed data
+0:geom_smooth(method = "lm", se = TRUE, alpha = 0.3) +  # Add regression line with confidence interval
+0:labs(x = "Time", y = "lgvegf", color = "dxgroup", linetype = "Gender") +  # Labels
+0:scale_linetype_manual(values = c("solid", "dashed")) +  # Specify line styles
+0:theme_minimal()  # Theme
+0:# Create a ggplot to plot the data and fitted values
+0:ggplot(complete_data, aes(x = time, y = fitted_values, color = dxgroup, linetype = gender)) +
+0:geom_point(size = 0.9) +  # Add points for the observed data
+0:geom_smooth(method = "lm", se = TRUE) +  # Add regression line without confidence interval
+0:labs(x = "Time", y = "Predicted lgvegf", color = "dxgroup") +  # Labels
+0:theme_minimal()  # Theme
+1707434968540:.libPaths()
+1707434973085:installed.packages
+1707434975167:installed.packages()
+1707435009788:library(nlme, lib.loc = "/usr/local/lib/R/library")
+1707435035185:library(ggplot2) # For visualization
