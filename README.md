@@ -1,4 +1,4 @@
-# Reproducible Research Repository
+# Reproducible and Replicable Research with R, Docker and Github
 This repository contains scripts and resources for reproducible research analysis related to inflammation markers. By following the instructions below, you can replicate the analysis and explore the provided datasets and scripts.
 
 ## Getting Started
