@@ -7,7 +7,8 @@ To begin, clone this repository to your local machine using Git:
 ```git clone https://github.com/nghuixin/reproducible_research.git```
 
 ## Creating the Analysis Environment
-You can utilize Docker to set up a consistent analysis environment. First, pull the docker image [here]([url](https://hub.docker.com/repository/docker/nghuixin/infl_marker_analysis/general)). Run the following command in the cloned directory:
+You can utilize Docker to set up a consistent analysis environment. First, pull the docker image: https://hub.docker.com/repository/docker/nghuixin/infl_marker_analysis/general.   
+Run the following command in the cloned directory:
  
 ```docker run --rm -p 8787:8787 -e DISABLE_AUTH=true -v $(pwd):/home/rstudio -v /home/rstudio/renv nghuixin/infl_marker_analysis:1.0.1```
 
