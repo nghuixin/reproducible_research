@@ -10,7 +10,7 @@ To begin, clone this repository to your local machine using Git:
 You can utilize Docker to set up a consistent analysis environment. First, pull the docker image: https://hub.docker.com/repository/docker/nghuixin/infl_marker_analysis/general.   
 Run the following command in the cloned directory:
  
-```docker run --rm -p 8787:8787 -e DISABLE_AUTH=true -v $(pwd):/home/rstudio -v /home/rstudio/renv nghuixin/infl_marker_analysis:1.0.1```
+```docker run --rm -p 8787:8787 -e DISABLE_AUTH=true -v $(pwd)/data:/home/rstudio/data nghuixin/infl_marker_analysis:1.0.1```
 
 This will start an RStudio session accessible via your browser at localhost:8787. The environment is pre-configured with all necessary system dependencies, R version, and packages required for the analysis.
 
